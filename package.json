@@ -7,6 +7,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build": "npm run packagr",
+    "build:package": "node ./chore/scripts/tasks/build",
     "packagr": "ng-packagr -p src/package.json",
     "docs": "npm run docs:build",
     "docs:build": "compodoc -p ./src/tsconfig.api-doc.json -n angular-star-rating -d docs/api-doc/ --hideGenerator",
@@ -57,6 +58,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "ng-packagr": "^2.0.0",
     "@angular/cli": "1.1.0",
     "@angular/compiler-cli": "^4.0.0",
     "@angular/language-service": "^4.0.0",
