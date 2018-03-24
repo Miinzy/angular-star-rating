@@ -1,4 +1,4 @@
-import {starRatingColor} from "./star-rating-struct";
+import {starRatingColor} from '../interfaces/star-rating-config.interface';
 export class StarRatingUtils {
     //Static methods
     ///////////////////////////////////////////////////////////////////////////////////////////
