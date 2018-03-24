@@ -1,8 +1,8 @@
 import {Component} from "@angular/core";
 import {
-  OnClickEvent,
-  OnHoverRatingChangeEvent,
-  OnRatingChangeEven
+  ClickEvent,
+  HoverRatingChangeEvent,
+  RatingChangeEvent
 } from 'angular-star-rating';
 
 @Component({
@@ -22,21 +22,21 @@ import {
 })
 export class MyEventsComponent {
 
-    onClickResult:OnClickEvent;
-    onHoverRatingChangeResult:OnHoverRatingChangeEvent;
-    onRatingChangeResult:OnRatingChangeEven;
+    onClickResult:ClickEvent;
+    onHoverRatingChangeResult:HoverRatingChangeEvent;
+    onRatingChangeResult:RatingChangeEvent;
 
-    onClick = ($event:OnClickEvent) => {
+    onClick = ($event:ClickEvent) => {
         console.log('onClick $event: ', $event);
         this.onClickResult = $event;
     };
 
-    onRatingChange = ($event:OnRatingChangeEven) => {
+    onRatingChange = ($event:RatingChangeEvent) => {
         console.log('onRatingUpdated $event: ', $event);
         this.onRatingChangeResult = $event;
     };
 
-    onHoverRatingChange = ($event:OnHoverRatingChangeEvent) => {
+    onHoverRatingChange = ($event:HoverRatingChangeEvent) => {
         console.log('onHoverRatingChange $event: ', $event);
         this.onHoverRatingChangeResult = $event;
     };

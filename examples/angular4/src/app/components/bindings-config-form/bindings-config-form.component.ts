@@ -1,31 +1,29 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {
-  OnClickEvent,
-  OnHoverRatingChangeEvent,
-  OnRatingChangeEven,
+  ClickEvent,
+  HoverRatingChangeEvent, RatingChangeEvent,
   starRatingColor,
-  starRatingPosition,
+  starRatingLabelPosition,
   starRatingSizes,
   starRatingSpeed,
   starRatingStarSpace,
   starRatingStarTypes
 } from 'angular-star-rating';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import 'rxjs/add/operator/takeUntil';
 import {Subject} from 'rxjs/Subject';
-import 'rxjs/add/operator/takeUntil'
-
 @Component({
   selector: 'bindings-config-form',
   templateUrl: './bindings-config-form.component.html',
   styleUrls: ['./bindings-config-form.component.scss']
 })
-export class BindingsConfigFormComponent implements OnInit, OnDestroy{
+export class BindingsConfigFormComponent implements OnInit, OnDestroy {
 
   private onDestroy$: Subject<boolean> = new Subject<boolean>();
 
   //option sets
   colorOptions: Array<starRatingColor | string> = ['default', 'negative', 'ok', 'positive'];
-  labelPositionOptions: Array<starRatingPosition | string> = ['top', 'right', 'left', 'bottom'];
+  labelPositionOptions: Array<starRatingLabelPosition | string> = ['top', 'right', 'left', 'bottom'];
   starOptions: Array<starRatingStarTypes> = ['svg', 'icon', 'image'];
   speedOptions: Array<starRatingSpeed> = ['immediately', 'noticeable', 'slow'];
   sizeOptions: Array<starRatingSizes> = ['small', 'medium', 'large'];
@@ -77,26 +75,26 @@ export class BindingsConfigFormComponent implements OnInit, OnDestroy{
   }
 
   //component output (& bindings)
-  onHover($event: OnHoverRatingChangeEvent): void {
+  onHover($event: HoverRatingChangeEvent): void {
     console.log('single onHover rating: ', $event.hoverRating);
   }
 
-  onClick($event: OnClickEvent): void {
+  onClick($event: ClickEvent): void {
     console.log('single onClick rating: ', $event.rating);
   }
 
-  onHoverRatingChange($event: OnHoverRatingChangeEvent): void {
+  onHoverRatingChange($event: HoverRatingChangeEvent): void {
     console.log('single OnHoverRatingChangeEven rating: ', $event.hoverRating);
     // this.bindingsForm.get('hoverRating').setValue($event.hoverRating);
   }
 
-  onRatingChange($event: OnRatingChangeEven): void {
+  onRatingChange($event: RatingChangeEvent): void {
     console.log('single onRatingChange rating: ', $event.rating);
     this.bindingsForm.get('rating').setValue($event.rating);
   }
 
   updateGetColorBinding() {
-    if (this.bindingsForm.get('useCustomCetColor').value) {
+    if (!this.bindingsForm.get('useCustomCetColor').value) {
       this.bindingsForm.get('getColor').setValue(this._getColor);
     }
     else {
@@ -114,16 +112,15 @@ export class BindingsConfigFormComponent implements OnInit, OnDestroy{
             this.bindingsForm.get('getHalfStarVisible').setValue(this._getHalfStarVisible);
           }
           else {
-            this.bindingsForm.get('getHalfStarVisible').setValue(() => {});
+            this.bindingsForm.get('getHalfStarVisible').setValue(() => {
+            });
           }
         }
       )
   }
 
   _getColor(rating: number | string, numOfStars: number, staticColor: string): string {
-    console.log('getColor rating: ', rating, 'numOfStars: ', numOfStars, 'fixColor: ', staticColor);
-    let colors = ['default', 'negative', 'ok', 'positive'];
-    return colors[Math.floor(Math.random() * colors.length)];
+    return 'default';
   }
 
   _getHalfStarVisible(rating: number): boolean {

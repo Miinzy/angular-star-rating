@@ -24,16 +24,22 @@
             (click)="toggleNav(true)">Event Bindings</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['kitchensink']"
-            (click)="toggleNav(true)">Kitchensink</a>
+          <a class="nav-link" [routerLink]="['bindings']"
+            (click)="toggleNav(true)">Property Bindings</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['config']"
-            (click)="toggleNav(true)">Config</a>
-        </li>
+        <!--
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link"
             (click)="toggleNav(true)">All Bindings</a>
+        </li>
+        -->
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['config']"
+            (click)="toggleNav(true)">Custom Config</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLink]="['lazy-comp']">
+          <a class="nav-link"
+            (click)="toggleNav(true)">Lazy Custom Config</a>
         </li>
       </ul>
     </div>

@@ -26,21 +26,23 @@
       (onHoverRatingChange)="onHoverRatingChange($event)"
       (onClick)="onClick($event)"
       (onRatingChange)="onRatingChange($event)"
-    ></star-rating-comp>
-
+    >
+    </star-rating-comp>
   </div>
 </div>
   <div class="row">
     <div class="col-4" >
       <fieldset class="form-group">
         <legend>Layout</legend>
-        <!--<div class="form-check">
+        <!--
+        <div class="form-check">
           <label class="form-check-label">
             <input type="checkbox" class="form-check-input"
               formControlName="labelVisible">
             Label Hidden
           </label>
-        </div>-->
+        </div>
+        -->
         <div class="form-check">
           <label class="col-4 col-form-label">Label Position</label>
           <div class="col-8">
@@ -135,9 +137,11 @@
         <div class="form-check">
           <label class="form-check-label">
             <input type="checkbox" class="form-check-input"
-              formControlName="useCustomCetColor">
+              formControlName="useCustomCetColor"
+            (click)="updateGetColorBinding()">
             use custom getColor function
           </label>
+          bindingsForm.get('getColor').value: {{bindingsForm.get('getColor').value}}
         </div>
 
         <div class="form-check">

@@ -1,10 +1,8 @@
-
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MyFormComponent} from './components/my-form-component-minimal/form-test.component';
 import {BindingsConfigFormComponent} from './components/bindings-config-form/bindings-config-form.component';
 import {MyEventsComponent} from './components/my-events/my-events.component';
-import {MyConfigComponent} from './components/my-config/my-config.component';
+import {MyFormComponent} from './components/my-form-component-minimal/form-test.component';
 
 
 const routes: Routes = [
@@ -14,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path:'kitchensink',
+    path:'bindings',
     component: BindingsConfigFormComponent
   },
   {
@@ -26,19 +24,19 @@ const routes: Routes = [
     component: MyFormComponent
   },
   {
-    path:'config',
-    component: MyConfigComponent
+    path:'lazy-comp',
+    loadChildren: 'app/config-lazy-feature-module/lazy-module-test.module#LazyModuleModule'
   },
-  {
+  /*{
     path:'**',
-    redirectTo: 'form'
-  }
+    redirectTo: 'bindings'
+  }*/
 ];
 
 @NgModule(
   {
     imports: [
-      RouterModule.forRoot(routes)
+      RouterModule.forRoot(routes, {enableTracing: true})
     ],
     exports: [RouterModule]
   }
