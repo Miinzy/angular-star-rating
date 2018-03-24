@@ -1,7 +1,7 @@
 {
   "name": "angular-star-rating",
   "description": "Angular Star Rating is a fully featured and configurabel Angular UI component.",
-  "version": "3.0.8",
+  "version": "4.0.0.0-beta",
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
     "workingDirectory": "../.ng_build",
