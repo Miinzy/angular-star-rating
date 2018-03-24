@@ -8,6 +8,7 @@ cache:
      - ./node_modules
 
 install:
+  - npm i -g ng-packagr@^2.0.0
   - npm install
 
 before_script:
